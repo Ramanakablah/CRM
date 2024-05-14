@@ -1,0 +1,143 @@
+{
+  "id": "2a3871de-a3a5-490a-8cb5-5e417ce5ae6a",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "Leads": {
+      "name": "Leads",
+      "schema": "",
+      "columns": {
+        "leadid": {
+          "name": "leadid",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "customerId": {
+          "name": "customerId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "contact": {
+          "name": "contact",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "purpose": {
+          "name": "purpose",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Neutral'"
+        },
+        "read": {
+          "name": "read",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "response": {
+          "name": "response",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "readat": {
+          "name": "readat",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Leads_customerId_Customers_customertkey_fk": {
+          "name": "Leads_customerId_Customers_customertkey_fk",
+          "tableFrom": "Leads",
+          "tableTo": "Customers",
+          "columnsFrom": [
+            "customerId"
+          ],
+          "columnsTo": [
+            "customertkey"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "Customers": {
+      "name": "Customers",
+      "schema": "",
+      "columns": {
+        "customerid": {
+          "name": "customerid",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Name": {
+          "name": "Name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "customerimage": {
+          "name": "customerimage",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "customertkey": {
+          "name": "customertkey",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

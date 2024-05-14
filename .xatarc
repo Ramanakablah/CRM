@@ -1,0 +1,7 @@
+{
+  "databaseURL": "https://Raman-s-workspace-j978s7.us-east-1.xata.sh/db/CRMDbs",
+  "codegen": {
+    "output": "src/xata.ts",
+    "moduleType": "deno"
+  }
+}
