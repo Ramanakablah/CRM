@@ -15,7 +15,7 @@ export const AddUserAdmin = (req: Request, res: Response) => {
             customername: req.body.customername,
             customerKey: req.body.customerKey,
             customerimage: req.body.customerimage,
-            status: false
+            status: true
         }).then((response: any) => {
             // console.log({ response })
             ResponseHandler(res, 200, 1, null, response);
@@ -85,13 +85,14 @@ export const deactivateUser = (req: Request, res: Response) => {
         db.select().from(UserSchema).where(eq(UserSchema.customerid, id)).then((response: any) => {
             if (response[0]) {
                 let customer: any = response[0];
+                console.log({ customer })
                 if (customer.status) {
                     db.update(UserSchema).set({ status: false }).where(eq(UserSchema.customerid, id)).then((response) => {
                         ResponseHandler(res, 200, 1, null, response);
                     })
                 }
                 else {
-                    ResponseHandler(res, 200, 1, null, "User Already Deactivated");
+                    ResponseHandler(res, 200, 1, null, "User is Already Deactivated");
                 }
             }
             else {

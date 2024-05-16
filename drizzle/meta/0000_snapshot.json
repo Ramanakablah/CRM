@@ -1,5 +1,5 @@
 {
-  "id": "2a3871de-a3a5-490a-8cb5-5e417ce5ae6a",
+  "id": "03c6df60-5ab8-45dc-a92d-ee55f683cf38",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -17,6 +17,12 @@
         "customerId": {
           "name": "customerId",
           "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "client_name": {
+          "name": "client_name",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         },
@@ -45,6 +51,13 @@
           "notNull": false,
           "default": "'Neutral'"
         },
+        "created_at": {
+          "name": "created_at",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
         "read": {
           "name": "read",
           "type": "boolean",
@@ -63,6 +76,13 @@
           "type": "date",
           "primaryKey": false,
           "notNull": false
+        },
+        "deleted": {
+          "name": "deleted",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
         }
       },
       "indexes": {},
@@ -94,8 +114,8 @@
           "primaryKey": true,
           "notNull": true
         },
-        "Name": {
-          "name": "Name",
+        "Customerame": {
+          "name": "Customerame",
           "type": "text",
           "primaryKey": false,
           "notNull": true
@@ -130,7 +150,15 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {
+        "Customers_customertkey_unique": {
+          "name": "Customers_customertkey_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "customertkey"
+          ]
+        }
+      }
     }
   },
   "enums": {},
