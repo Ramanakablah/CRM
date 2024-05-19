@@ -62,7 +62,7 @@ export const updateStatusofLead = (req: Request, res: Response) => {
         const status: string = req.body.status;
         db.select().from(LeadSchema).where(eq(LeadSchema.leadid, Leadid)).then((Lead: any) => {
             if (Lead[0]) {
-                db.update(LeadSchema).set({ status: status }).where(eq(LeadSchema, Leadid)).then((response) => {
+                db.update(LeadSchema).set({ status: status }).where(eq(LeadSchema.leadid, Leadid)).then((response) => {
                     ResponseHandler(res, 200, 1, null, response);
                 })
             }
